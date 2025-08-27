@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Printing - Team</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS to define color palette and animations -->
+    <style>
+        :root {
+            --primary-black: #121212;
+            --secondary-purple: #1a1a2e;
+            --accent-pink: #ff69b4;
+            --text-light: #e0e0e0;
+        }
+
+        .bg-primary-black { background-color: var(--primary-black); }
+        .bg-secondary-purple { background-color: var(--secondary-purple); }
+        .text-accent-pink { color: var(--accent-pink); }
+        .text-text-light { color: var(--text-light); }
+        .text-primary-black { color: var(--primary-black); }
+
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Background Animation */
+        .background-animation {
+            background: linear-gradient(-45deg, var(--primary-black), var(--secondary-purple));
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Custom shadow and hover effects */
+        .custom-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="bg-primary-black text-text-light antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-primary-black bg-opacity-80 backdrop-blur-sm shadow-xl">
+        <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-accent-pink flex items-center">
+                <!-- Company Logo -->
+                <img src="/LOGO.jpg" alt="Galaxy Printing Logo" class="h-10">
+            </a>
+            <ul class="flex space-x-6 lg:space-x-10 text-lg">
+                <li><a href="services.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Services</a></li>
+                <li><a href="team.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Team</a></li>
+                <li><a href="projects.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Projects</a></li>
+                <li><a href="contact.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="team-hero" class="min-h-screen flex flex-col items-center justify-center relative p-4 text-center overflow-hidden">
+            <!-- Background Image -->
+            <img src="/PICTURE.jpg" alt="Galaxy Background" class="absolute inset-0 w-full h-full object-cover">
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-primary-black opacity-80 z-0"></div>
+            <!-- Animated vector effect -->
+            <div class="absolute inset-0 z-0 background-animation"></div>
+
+            <div class="z-10 py-16 px-6 max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-accent-pink drop-shadow-lg">
+                    MEET OUR TEAM
+                </h1>
+                <p class="mt-4 text-lg md:text-xl font-medium text-text-light opacity-90">
+                    Our dedicated professionals are at the heart of everything we do.
+                </p>
+            </div>
+        </section>
+
+        <!-- Team Members Section -->
+        <section class="py-20 px-4 bg-primary-black">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold text-center text-accent-pink mb-12">The People Behind the Vision</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/150x150/1a1a1a/e0e0e0?text=Jane+D" alt="Jane Doe" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover">
+                        <h3 class="text-2xl font-semibold text-text-light mb-1">Jane Doe</h3>
+                        <p class="text-accent-pink font-medium">Founder & CEO</p>
+                        <p class="mt-4 text-text-light">Jane started Galaxy Printing with a passion for quality and a vision to make professional printing accessible to all.</p>
+                        <div class="mt-4 flex justify-center space-x-4">
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <!-- Team Member 2 -->
+                    <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/150x150/1a1a1a/e0e0e0?text=John+S" alt="John Smith" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover">
+                        <h3 class="text-2xl font-semibold text-text-light mb-1">John Smith</h3>
+                        <p class="text-accent-pink font-medium">Lead Designer</p>
+                        <p class="mt-4 text-text-light">John is our creative guru, with an eye for detail and a knack for turning concepts into stunning visuals.</p>
+                        <div class="mt-4 flex justify-center space-x-4">
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <!-- Team Member 3 -->
+                    <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/150x150/1a1a1a/e0e0e0?text=Sarah+M" alt="Sarah Miller" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover">
+                        <h3 class="text-2xl font-semibold text-text-light mb-1">Sarah Miller</h3>
+                        <p class="text-accent-pink font-medium">Head of Operations</p>
+                        <p class="mt-4 text-text-light">Sarah ensures every project runs smoothly, from the initial quote to the final delivery, with flawless efficiency.</p>
+                        <div class="mt-4 flex justify-center space-x-4">
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-text-light hover:text-accent-pink transition-colors"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-accent-pink text-text-light py-4">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+            <p>&copy; <span id="current-year"></span> Galaxy Printing. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript to update year in footer -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
