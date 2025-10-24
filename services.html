@@ -4,271 +4,1204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galaxy Printing - Services</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom CSS to define color palette and animations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-black: #121212;
-            --secondary-purple: #1a1a2e;
-            --accent-pink: #ff69b4;
-            --text-light: #e0e0e0;
+            --primary-pink: #e91e63;
+            --primary-pink-light: #f8bbd9;
+            --primary-pink-dark: #c2185b;
+            --text-black: #212121;
+            --text-gray: #757575;
+            --bg-white: #ffffff;
+            --bg-light: #f5f5f5;
         }
-
-        .bg-primary-black { background-color: var(--primary-black); }
-        .bg-secondary-purple { background-color: var(--secondary-purple); }
-        .text-accent-pink { color: var(--accent-pink); }
-        .text-text-light { color: var(--text-light); }
-
-        body { font-family: 'Inter', sans-serif; }
-
-        /* Background Animation */
-        .background-animation {
-            background: linear-gradient(-45deg, var(--primary-black), var(--secondary-purple));
-            background-size: 400% 400%;
-            animation: gradient-animation 15s ease infinite;
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            scroll-behavior: smooth;
         }
-
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        
+        .section-padding {
+            padding: 5rem 1rem;
         }
-
-        /* Custom shadow and hover effects */
-        .custom-shadow {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-pink);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--primary-pink);
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-pink-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-pink-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            background: var(--primary-pink);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        }
+        
+        .service-card:hover .service-icon i {
+            color: white;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.5);
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(233, 30, 99, 0.7);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(233, 30, 99, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+            }
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('./images/digital.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            line-height: 1;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-white);
+            border-left: 4px solid var(--primary-pink);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-pink);
+            transform: translateX(5px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, #9c27b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .counter-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-pink-light) 0%, rgba(233, 30, 99, 0.1) 100%);
+            z-index: -1;
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            bottom: -10px;
+            left: 20%;
+            background: var(--primary-pink);
+            border-radius: 2px;
+        }
+        
+        .price-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .price-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary-pink);
+            color: white;
+            padding: 5px 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background: var(--primary-pink-light);
+            color: var(--primary-pink);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .service-tag:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+        
+        .tab-button {
+            background: white;
+            border: 2px solid var(--primary-pink-light);
+            color: var(--text-black);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-button.active {
+            background: var(--primary-pink);
+            color: white;
+            border-color: var(--primary-pink);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+        
+        .tab-button:hover:not(.active) {
+            background: var(--primary-pink-light);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .service-image {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--primary-pink-light) 0%, #f8bbd9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
+        
+        .glow-shadow {
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.2);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-card {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-image {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 1rem;
         }
     </style>
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
-<body class="bg-primary-black text-text-light antialiased">
-
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-primary-black bg-opacity-80 backdrop-blur-sm shadow-xl">
-        <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-accent-pink flex items-center">
-                <!-- Company Logo -->
-                <img src="/LOGO.jpg" alt="Galaxy Printing Logo" class="h-10">
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white header-shadow">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="navbar-brand">
+                <!-- Replace the src with your actual logo path -->
+                <img src="Galaxy Logo Revamp-01.png" alt="Galaxy Printing Logo" class="logo-image">
             </a>
-            <ul class="flex space-x-6 lg:space-x-10 text-lg">
-                <li><a href="services.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Services</a></li>
-                <li><a href="team.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Team</a></li>
-                <li><a href="projects.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Projects</a></li>
-                <li><a href="contact.html" class="text-text-light hover:text-accent-pink transition-colors font-medium">Contact</a></li>
-            </ul>
-        </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-black focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 text-lg">
+                <a href="index.html" class="nav-link text-black font-medium">Home</a>
+                <a href="services.html" class="nav-link text-primary-pink font-medium">Services</a>
+                <a href="portfolio.html" class="nav-link text-black font-medium">Portfolio</a>
+                <a href="team.html" class="nav-link text-black font-medium">Team</a>
+                <a href="contact.html" class="nav-link text-black font-medium">Contact</a>
+            </nav>
+            
+            <!-- CTA Button -->
+            <a href="contact.html" class="hidden md:inline-block px-6 py-3 btn-primary rounded-full font-semibold shadow-md">
+                Get Quote <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white py-4 px-4 hidden shadow-lg floating-card">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-black font-medium py-2 border-b border-gray-200">Home</a>
+                <a href="services.html" class="text-primary-pink font-medium py-2 border-b border-gray-200">Services</a>
+                <a href="portfolio.html" class="text-black font-medium py-2 border-b border-gray-200">Portfolio</a>
+                <a href="team.html" class="text-black font-medium py-2 border-b border-gray-200">Team</a>
+                <a href="contact.html" class="text-black font-medium py-2 border-b border-gray-200">Contact</a>
+                <a href="contact.html" class="btn-primary text-center py-3 rounded-full font-semibold mt-2 shadow-md">
+                    Get Quote <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="services-hero" class="min-h-screen flex flex-col items-center justify-center relative p-4 text-center overflow-hidden">
-            <!-- Background Image -->
-            <img src="https://placehold.co/1920x1080/1a1a1a/4c2a71?text=Galaxy" alt="Galaxy Background" class="absolute inset-0 w-full h-full object-cover">
-            <!-- Dark Overlay -->
-            <div class="absolute inset-0 bg-primary-black opacity-80 z-0"></div>
-            <!-- Animated vector effect -->
-            <div class="absolute inset-0 z-0 background-animation"></div>
-
-            <div class="z-10 py-16 px-6 max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-accent-pink drop-shadow-lg">
-                    OUR SERVICES
-                </h1>
-                <p class="mt-4 text-lg md:text-xl font-medium text-text-light opacity-90">
-                    Explore our wide range of services designed to bring your ideas to life.
-                </p>
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-20">
+        <div class="max-w-6xl mx-auto px-4 py-16 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-shadow">
+                Our <span class="gradient-text">Services</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-700 max-w-3xl mx-auto">
+                Discover our comprehensive range of professional printing solutions tailored to your needs
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-16">
+                <a href="#services" class="px-8 py-4 btn-primary rounded-full font-semibold text-lg shadow-lg">
+                    Explore Services <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+                <a href="contact.html" class="px-8 py-4 bg-transparent border-2 border-primary-pink text-primary-pink rounded-full font-semibold text-lg hover:bg-primary-pink hover:text-white transition-all shadow-md">
+                    Get Custom Quote
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Main Services Section -->
-        <section class="py-20 px-4 bg-primary-black">
-            <div class="max-w-7xl mx-auto">
-                <!-- Winter Special -->
-                <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-accent-pink mb-8">Winter Special</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Pull-Up Banner Combo</h3>
-                            <p class="text-4xl font-bold text-accent-pink">N$1249.99</p>
-                        </div>
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Wall Banner</h3>
-                            <p class="text-4xl font-bold text-accent-pink">N$6999.99</p>
-                        </div>
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Executive Pull-Up Banner</h3>
-                            <p class="text-4xl font-bold text-accent-pink">N$1119.99</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Promotional Items -->
-                <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-accent-pink mb-8">Promotional Items</h2>
-                    <ul class="flex flex-wrap justify-center gap-4 text-lg text-center">
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Caps</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Hats</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">T-shirts</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Umbrellas</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Towels</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Mugs</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Bottles</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Flusks</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Pens</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">USBs</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Lanyards</li>
-                        <li class="bg-secondary-purple py-2 px-4 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300">Key Rings</li>
-                    </ul>
-                </div>
-
-                <!-- General Printing -->
-                <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-accent-pink mb-8">General Printing</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                        <div class="bg-secondary-purple p-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">Photocopies</div>
-                        <div class="bg-secondary-purple p-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">Laminations</div>
-                        <div class="bg-secondary-purple p-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">Binding</div>
-                        <div class="bg-secondary-purple p-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">Flyers</div>
-                        <div class="bg-secondary-purple p-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">Posters</div>
-                        <div class="bg-secondary-purple p-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">Invitation Cards</div>
-                        <div class="bg-secondary-purple p-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">Business Cards</div>
-                    </div>
-                </div>
-
-                <!-- Canvas Packages -->
-                <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-accent-pink mb-8">Canvas Packages</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-                        <div class="bg-secondary-purple p-6 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-xl font-semibold text-text-light mb-2">A0 Canvas</h3>
-                            <p class="text-3xl font-bold text-accent-pink">N$495</p>
-                        </div>
-                        <div class="bg-secondary-purple p-6 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-xl font-semibold text-text-light mb-2">A1 Canvas</h3>
-                            <p class="text-3xl font-bold text-accent-pink">N$399</p>
-                        </div>
-                        <div class="bg-secondary-purple p-6 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-xl font-semibold text-text-light mb-2">A2 Canvas</h3>
-                            <p class="text-3xl font-bold text-accent-pink">N$330</p>
-                        </div>
-                        <div class="bg-secondary-purple p-6 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-xl font-semibold text-text-light mb-2">A3 Canvas</h3>
-                            <p class="text-3xl font-bold text-accent-pink">N$270</p>
-                        </div>
-                        <div class="bg-secondary-purple p-6 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-xl font-semibold text-text-light mb-2">A4 Canvas</h3>
-                            <p class="text-3xl font-bold text-accent-pink">N$220</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wedding Packages -->
-                <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-accent-pink mb-8">Wedding Packages</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Mini Package</h3>
-                            <ul class="list-none text-text-light text-left mb-4 px-4">
-                                <li class="py-1">Pull-up banner/Canvas A0 size</li>
-                                <li class="py-1">Number plate stickers</li>
-                                <li class="py-1">T-shirts</li>
-                            </ul>
-                            <p class="text-4xl font-bold text-accent-pink">N$1099.00</p>
-                        </div>
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Basic Package</h3>
-                            <ul class="list-none text-text-light text-left mb-4 px-4">
-                                <li class="py-1">Pull-up banner/Canvas A0 size</li>
-                                <li class="py-1">Number plate stickers</li>
-                                <li class="py-1">Water bottle stickers</li>
-                                <li class="py-1">Champagne stickers</li>
-                                <li class="py-1">T-shirts</li>
-                            </ul>
-                            <p class="text-4xl font-bold text-accent-pink">N$1399.00</p>
-                        </div>
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Lavish Package</h3>
-                            <ul class="list-none text-text-light text-left mb-4 px-4">
-                                <li class="py-1">Pull-up banner/Canvas A0 size</li>
-                                <li class="py-1">Number plate stickers</li>
-                                <li class="py-1">Water bottle stickers</li>
-                                <li class="py-1">Champagne stickers</li>
-                                <li class="py-1">T-shirts</li>
-                                <li class="py-1">Save the date</li>
-                            </ul>
-                            <p class="text-4xl font-bold text-accent-pink">N$1999.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Embroidery -->
-                <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-accent-pink mb-8">Embroidery</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Mini-package</h3>
-                            <ul class="list-none text-text-light text-center mb-4">
-                                <li>5x pocket size embroidery</li>
-                                <li>Free digitizing</li>
-                                <li>No set up cost</li>
-                            </ul>
-                            <p class="text-4xl font-bold text-accent-pink">N$145.00</p>
-                        </div>
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Mega-package</h3>
-                            <ul class="list-none text-text-light text-center mb-4">
-                                <li>10x pocket size embroidery</li>
-                                <li>Free digitizing</li>
-                                <li>No set up cost</li>
-                            </ul>
-                            <p class="text-4xl font-bold text-accent-pink">N$275.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other Services -->
-                <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-accent-pink mb-8">Other Services</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Vehicle Branding -->
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Vehicle Branding</h3>
-                            <ul class="list-none text-text-light text-center">
-                                <li>Vehicle Stickers</li>
-                                <li>Magnetic Stickers</li>
-                                <li>Dummy Number Plates</li>
-                            </ul>
-                        </div>
-                        <!-- Rubber Stamps -->
-                        <div class="bg-secondary-purple p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-text-light mb-2">Rubber Stamps</h3>
-                            <ul class="list-none text-text-light text-center">
-                                <li>Self Inking Rubber Stamp</li>
-                                <li>Paid Stamps</li>
-                                <li>Dater Stamps</li>
-                                <li>Rubber Replacements</li>
-                                <li>Signature Stamps</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
+    <!-- Services Navigation -->
+    <section class="py-8 bg-gray-50 sticky top-20 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4" id="service-tabs">
+                <button class="tab-button active" data-tab="special">Winter Special</button>
+                <button class="tab-button" data-tab="promotional">Promotional Items</button>
+                <button class="tab-button" data-tab="general">General Printing</button>
+                <button class="tab-button" data-tab="canvas">Canvas Packages</button>
+                <button class="tab-button" data-tab="wedding">Wedding Packages</button>
+                <button class="tab-button" data-tab="embroidery">Embroidery</button>
+                <button class="tab-button" data-tab="other">Other Services</button>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Services Content -->
+    <section id="services" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Winter Special -->
+            <div class="tab-content active" id="special">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Winter <span class="text-primary-pink">Special</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Limited time offers on our most popular banner solutions
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Pull-Up Banner Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-flag text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Pull-Up Banner Combo</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$1249.99</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Premium quality material</li>
+                            <li>Easy pull-up mechanism</li>
+                            <li>Vibrant color printing</li>
+                            <li>Carrying case included</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Order Now
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Wall Banner Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-image text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Wall Banner</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$6999.99</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Large format printing</li>
+                            <li>Durable outdoor material</li>
+                            <li>Weather resistant</li>
+                            <li>Professional installation available</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Order Now
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Executive Banner Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-flag-checkered text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Executive Pull-Up Banner</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$1119.99</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Executive design</li>
+                            <li>Premium finish</li>
+                            <li>Professional appearance</li>
+                            <li>Easy transport and setup</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Promotional Items -->
+            <div class="tab-content" id="promotional">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Promotional <span class="text-primary-pink">Items</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Custom branded merchandise to boost your brand visibility
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <span class="service-tag">Caps</span>
+                    <span class="service-tag">Hats</span>
+                    <span class="service-tag">T-shirts</span>
+                    <span class="service-tag">Umbrellas</span>
+                    <span class="service-tag">Towels</span>
+                    <span class="service-tag">Mugs</span>
+                    <span class="service-tag">Bottles</span>
+                    <span class="service-tag">Flusks</span>
+                    <span class="service-tag">Pens</span>
+                    <span class="service-tag">USBs</span>
+                    <span class="service-tag">Lanyards</span>
+                    <span class="service-tag">Key Rings</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                    <div class="feature-box card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Apparel Printing Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-4 text-center">Apparel Printing</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            High-quality custom printing on t-shirts, caps, and other apparel items using advanced techniques for lasting impressions.
+                        </p>
+                        <div class="text-center">
+                            <a href="contact.html" class="text-primary-pink font-semibold hover:underline flex items-center justify-center">
+                                Get Pricing <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Branded Merchandise Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-gift text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-4 text-center">Branded Merchandise</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Create memorable brand experiences with custom promotional products perfect for giveaways, events, and corporate gifts.
+                        </p>
+                        <div class="text-center">
+                            <a href="contact.html" class="text-primary-pink font-semibold hover:underline flex items-center justify-center">
+                                Get Pricing <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- General Printing -->
+            <div class="tab-content" id="general">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">General <span class="text-primary-pink">Printing</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        All your everyday printing needs with professional quality and fast turnaround
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
+                    <div class="service-tag text-center">Photocopies</div>
+                    <div class="service-tag text-center">Laminations</div>
+                    <div class="service-tag text-center">Binding</div>
+                    <div class="service-tag text-center">Flyers</div>
+                    <div class="service-tag text-center">Posters</div>
+                    <div class="service-tag text-center">Invitation Cards</div>
+                    <div class="service-tag text-center">Business Cards</div>
+                    <div class="service-tag text-center">Brochures</div>
+                    <div class="service-tag text-center">Letterheads</div>
+                    <div class="service-tag text-center">Envelopes</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Document Services Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-copy text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Document Services</h3>
+                        <p class="text-gray-600">High-quality photocopies, laminations, and binding for all your document needs.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Marketing Materials Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-newspaper text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Marketing Materials</h3>
+                        <p class="text-gray-600">Flyers, posters, and brochures designed to capture attention and deliver your message.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Business Essentials Image</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-id-card text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Business Essentials</h3>
+                        <p class="text-gray-600">Professional business cards, letterheads, and envelopes to represent your brand.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Canvas Packages -->
+            <div class="tab-content" id="canvas">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Canvas <span class="text-primary-pink">Packages</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Transform your photos and artwork into stunning gallery-quality canvas prints
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>A0 Canvas Example</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">A0 Canvas</h3>
+                        <p class="text-3xl font-bold text-primary-pink mb-4">N$495</p>
+                        <p class="text-gray-600 text-sm">841 × 1189 mm</p>
+                        <p class="text-gray-600 text-sm mt-2">Perfect for statement pieces</p>
+                    </div>
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>A1 Canvas Example</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">A1 Canvas</h3>
+                        <p class="text-3xl font-bold text-primary-pink mb-4">N$399</p>
+                        <p class="text-gray-600 text-sm">594 × 841 mm</p>
+                        <p class="text-gray-600 text-sm mt-2">Ideal for large wall art</p>
+                    </div>
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>A2 Canvas Example</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">A2 Canvas</h3>
+                        <p class="text-3xl font-bold text-primary-pink mb-4">N$330</p>
+                        <p class="text-gray-600 text-sm">420 × 594 mm</p>
+                        <p class="text-gray-600 text-sm mt-2">Great for medium spaces</p>
+                    </div>
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>A3 Canvas Example</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">A3 Canvas</h3>
+                        <p class="text-3xl font-bold text-primary-pink mb-4">N$270</p>
+                        <p class="text-gray-600 text-sm">297 × 420 mm</p>
+                        <p class="text-gray-600 text-sm mt-2">Perfect for desktop displays</p>
+                    </div>
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>A4 Canvas Example</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">A4 Canvas</h3>
+                        <p class="text-3xl font-bold text-primary-pink mb-4">N$220</p>
+                        <p class="text-gray-600 text-sm">210 × 297 mm</p>
+                        <p class="text-gray-600 text-sm mt-2">Ideal for small accents</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-6">All canvas prints include gallery-quality stretching and ready-to-hang finishing.</p>
+                    <a href="contact.html" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg shadow-lg inline-block">
+                        Order Your Canvas <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Wedding Packages -->
+            <div class="tab-content" id="wedding">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Wedding <span class="text-primary-pink">Packages</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Complete printing solutions to make your special day even more memorable
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Mini Wedding Package</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Mini Package</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$1099.00</p>
+                        <ul class="list-none text-gray-600 text-left mb-6 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Pull-up banner/Canvas A0 size</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Number plate stickers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>T-shirts (2 pieces)</span>
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Select Package
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Basic Wedding Package</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Basic Package</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$1399.00</p>
+                        <ul class="list-none text-gray-600 text-left mb-6 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Pull-up banner/Canvas A0 size</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Number plate stickers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Water bottle stickers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Champagne stickers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>T-shirts (4 pieces)</span>
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Select Package
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Lavish Wedding Package</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Lavish Package</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$1999.00</p>
+                        <ul class="list-none text-gray-600 text-left mb-6 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Pull-up banner/Canvas A0 size</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Number plate stickers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Water bottle stickers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Champagne stickers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>T-shirts (6 pieces)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary-pink mr-2 mt-1"></i>
+                                <span>Save the date cards (50 pieces)</span>
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Select Package
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-6">All packages can be customized to suit your specific wedding needs.</p>
+                    <a href="contact.html" class="px-8 py-4 bg-transparent border-2 border-primary-pink text-primary-pink rounded-full font-semibold text-lg hover:bg-primary-pink hover:text-white transition-all shadow-md inline-block">
+                        Customize Package <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Embroidery -->
+            <div class="tab-content" id="embroidery">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Embroidery <span class="text-primary-pink">Services</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Professional embroidery services for custom logos and designs on various materials
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Mini Embroidery Package</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Mini-package</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$145.00</p>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>5x pocket size embroidery</li>
+                            <li>Free digitizing</li>
+                            <li>No set up cost</li>
+                            <li>1-color design</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Order Now
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Mega Embroidery Package</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Mega-package</h3>
+                        <p class="text-4xl font-bold text-primary-pink mb-6">N$275.00</p>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>10x pocket size embroidery</li>
+                            <li>Free digitizing</li>
+                            <li>No set up cost</li>
+                            <li>Up to 3-color design</li>
+                            <li>Premium thread quality</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                    <div class="feature-box card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Apparel Embroidery Example</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-vest text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-4 text-center">Apparel Embroidery</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Professional embroidery on uniforms, corporate wear, and promotional apparel with precision and durability.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-box card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Custom Digitizing Example</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-vector-square text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-4 text-center">Custom Digitizing</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Transform your logos and designs into embroidery-ready files with our professional digitizing service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Services -->
+            <div class="tab-content" id="other">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Other <span class="text-primary-pink">Services</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Additional specialized services to meet all your printing and branding needs
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Vehicle Branding Example</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-car text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Vehicle Branding</h3>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Vehicle Stickers</li>
+                            <li>Magnetic Stickers</li>
+                            <li>Dummy Number Plates</li>
+                            <li>Full Vehicle Wraps</li>
+                            <li>Partial Vehicle Graphics</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Rubber Stamps Example</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-stamp text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Rubber Stamps</h3>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Self Inking Rubber Stamp</li>
+                            <li>Paid Stamps</li>
+                            <li>Dater Stamps</li>
+                            <li>Rubber Replacements</li>
+                            <li>Signature Stamps</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>QR Code Printing Example</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-qrcode text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">QR Code Printing</h3>
+                        <p class="text-gray-600">Custom QR codes for marketing materials, business cards, and promotional items.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>3D Signage Example</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-cube text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">3D Signage</h3>
+                        <p class="text-gray-600">Dimensional letters and logos for impactful business signage and branding.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <div class="image-placeholder w-full h-full flex items-center justify-center">
+                                <span>Custom Solutions Example</span>
+                            </div>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-puzzle-piece text-2xl text-primary-pink"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Custom Solutions</h3>
+                        <p class="text-gray-600">Tailored printing solutions for unique requirements and specialized projects.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-gradient-to-r from-primary-pink to-purple-600">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Get Started?</h2>
+            <p class="text-xl mb-8 text-white opacity-90">
+                Contact us today for a free consultation and quote on your next printing project
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="contact.html" class="px-8 py-4 bg-white text-primary-pink rounded-full font-semibold text-lg hover:bg-gray-100 transition-all shadow-lg">
+                    Get Quote <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="tel:+264817000084" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-primary-pink transition-all shadow-md">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-accent-pink text-primary-black py-4">
-        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
-            <p>&copy; <span id="current-year"></span> Galaxy Printing. All Rights Reserved.</p>
+    <footer class="footer-bg py-12 px-4 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="navbar-brand">
+                        <!-- Replace the src with your actual logo path -->
+                        <img src="Galaxy Logo Revamp-01.png" alt="Galaxy Printing Logo" class="footer-logo">
+                    </a>
+                    <p class="text-gray-300 mb-6">
+                        Professional printing solutions with quality, speed, and exceptional customer service.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/Galaxy.Advertising.Namibia" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-primary-pink hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/galaxy_namibia/" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-primary-pink hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-primary-pink hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-primary-pink hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-gray-300">Home</a></li>
+                        <li><a href="services.html" class="footer-link text-gray-300">Services</a></li>
+                        <li><a href="portfolio.html" class="footer-link text-gray-300">Portfolio</a></li>
+                        <li><a href="team.html" class="footer-link text-gray-300">Our Team</a></li>
+                        <li><a href="contact.html" class="footer-link text-gray-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#signage" class="footer-link text-gray-300">Signage & Banners</a></li>
+                        <li><a href="services.html#promotional" class="footer-link text-gray-300">Promotional Items</a></li>
+                        <li><a href="services.html#canvas" class="footer-link text-gray-300">Canvas Printing</a></li>
+                        <li><a href="services.html#wedding" class="footer-link text-gray-300">Wedding Packages</a></li>
+                        <li><a href="services.html#vehicle" class="footer-link text-gray-300">Vehicle Branding</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Contact Info</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary-pink mt-1 mr-3"></i>
+                            <div>
+                                <p class="text-gray-300 font-semibold">Windhoek Branch</p>
+                                <p class="text-gray-400">123 Print Street, Windhoek</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary-pink mt-1 mr-3"></i>
+                            <div>
+                                <p class="text-gray-300 font-semibold">Ondangwa Branch</p>
+                                <p class="text-gray-400">456 Design Avenue, Ondangwa</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-primary-pink mr-3"></i>
+                            <p class="text-gray-300">081 700 0084 (Windhoek)</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-primary-pink mr-3"></i>
+                            <p class="text-gray-300">081 700 0083 (Ondangwa)</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-primary-pink mr-3"></i>
+                            <p class="text-gray-300">info@galaxyprinting.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="current-year"></span> Galaxy Printing. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript to update year in footer -->
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/264817000084" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
     <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Add loading animation to elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on load
+            const animatedElements = document.querySelectorAll('.feature-box, .price-card');
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
     </script>
 </body>
 </html>
