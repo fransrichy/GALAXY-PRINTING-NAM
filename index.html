@@ -33,12 +33,12 @@
         
         .card-hover {
             transition: all 0.4s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
         
         .card-hover:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
         
         .nav-link {
@@ -66,12 +66,13 @@
             color: white;
             transition: all 0.3s ease;
             font-weight: 600;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
         }
         
         .btn-primary:hover {
             background: var(--primary-pink-dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
         }
         
         .service-icon {
@@ -84,11 +85,13 @@
             justify-content: center;
             margin: 0 auto 1.5rem;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
         }
         
         .service-card:hover .service-icon {
             transform: scale(1.1);
             background: var(--primary-pink);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
         }
         
         .service-card:hover .service-icon i {
@@ -146,7 +149,7 @@
         .testimonial-card {
             background: var(--bg-white);
             border-left: 4px solid var(--primary-pink);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
         
         .footer-link {
@@ -192,14 +195,14 @@
             background: white;
             border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .feature-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
         
         .section-title {
@@ -218,17 +221,63 @@
             background: var(--primary-pink);
             border-radius: 2px;
         }
+        
+        .logo-image {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .glow-shadow {
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.2);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--primary-pink-light) 0%, #f8bbd9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="bg-white">
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white header-shadow">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-black flex items-center">
-                <div class="w-10 h-10 bg-primary-pink rounded-full flex items-center justify-center mr-3 shadow-md">
-                    <i class="fas fa-star text-white text-sm"></i>
-                </div>
-                <span>Galaxy <span class="text-primary-pink">Printing</span></span>
+            <a href="index.html" class="navbar-brand">
+                <!-- Replace the src with your actual logo path -->
+                <img src="Galaxy Logo Revamp-01.png" alt="Galaxy Printing Logo" class="logo-image">
             </a>
             
             <!-- Mobile Menu Button -->
@@ -238,7 +287,7 @@
             
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-8 text-lg">
-                <a href="index.html" class="nav-link text-black font-medium">Home</a>
+                <a href="index.html" class="nav-link text-primary-pink font-medium">Home</a>
                 <a href="services.html" class="nav-link text-black font-medium">Services</a>
                 <a href="portfolio.html" class="nav-link text-black font-medium">Portfolio</a>
                 <a href="team.html" class="nav-link text-black font-medium">Team</a>
@@ -254,7 +303,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden bg-white py-4 px-4 hidden shadow-lg">
             <div class="flex flex-col space-y-4">
-                <a href="index.html" class="text-black font-medium py-2 border-b border-gray-200">Home</a>
+                <a href="index.html" class="text-primary-pink font-medium py-2 border-b border-gray-200">Home</a>
                 <a href="services.html" class="text-black font-medium py-2 border-b border-gray-200">Services</a>
                 <a href="portfolio.html" class="text-black font-medium py-2 border-b border-gray-200">Portfolio</a>
                 <a href="team.html" class="text-black font-medium py-2 border-b border-gray-200">Team</a>
@@ -269,7 +318,7 @@
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center justify-center pt-20">
         <div class="max-w-6xl mx-auto px-4 py-16 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-shadow">
                 Professional <span class="gradient-text">Printing</span> Solutions
             </h1>
             <p class="text-xl md:text-2xl mb-10 text-gray-700 max-w-3xl mx-auto">
@@ -284,21 +333,21 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                <div class="feature-box">
+                <div class="feature-box card-hover">
                     <div class="service-icon">
                         <i class="fas fa-print text-2xl text-primary-pink"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2 text-black">Quality Printing</h3>
                     <p class="text-gray-600">High-resolution printing with vibrant colors and premium materials</p>
                 </div>
-                <div class="feature-box">
+                <div class="feature-box card-hover">
                     <div class="service-icon">
                         <i class="fas fa-shipping-fast text-2xl text-primary-pink"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2 text-black">Fast Turnaround</h3>
                     <p class="text-gray-600">Quick delivery without compromising on quality and attention to detail</p>
                 </div>
-                <div class="feature-box">
+                <div class="feature-box card-hover">
                     <div class="service-icon">
                         <i class="fas fa-headset text-2xl text-primary-pink"></i>
                     </div>
@@ -322,6 +371,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
                 <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/signage-banners.png" alt="Signage & Banners" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
                     <div class="service-icon">
                         <i class="fas fa-sign text-2xl text-primary-pink"></i>
                     </div>
@@ -338,6 +392,11 @@
                 
                 <!-- Service 2 -->
                 <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/promotional-items.png" alt="Promotional Items" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
                     <div class="service-icon">
                         <i class="fas fa-tshirt text-2xl text-primary-pink"></i>
                     </div>
@@ -354,6 +413,11 @@
                 
                 <!-- Service 3 -->
                 <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/canvas.webp" alt="Canvas & Art Prints" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
                     <div class="service-icon">
                         <i class="fas fa-paint-brush text-2xl text-primary-pink"></i>
                     </div>
@@ -370,6 +434,11 @@
                 
                 <!-- Service 4 -->
                 <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/banner.webp" alt="Wedding Packages" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
                     <div class="service-icon">
                         <i class="fas fa-ring text-2xl text-primary-pink"></i>
                     </div>
@@ -386,6 +455,11 @@
                 
                 <!-- Service 5 -->
                 <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/branding.jpg" alt="Vehicle Branding" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
                     <div class="service-icon">
                         <i class="fas fa-car text-2xl text-primary-pink"></i>
                     </div>
@@ -402,6 +476,11 @@
                 
                 <!-- Service 6 -->
                 <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/OIP.webp" alt="General Printing" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
                     <div class="service-icon">
                         <i class="fas fa-copy text-2xl text-primary-pink"></i>
                     </div>
@@ -462,8 +541,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
                 <div class="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100 shadow-md">
-                    <div class="h-48 bg-gradient-to-r from-primary-pink to-purple-600 flex items-center justify-center">
-                        <i class="fas fa-car text-6xl text-white opacity-90"></i>
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/Final Bas Mockups 12.jpg" alt="Vehicle Branding Project" class="w-full h-full object-cover rounded-lg">
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-black">Vehicle Branding</h3>
@@ -476,8 +557,10 @@
                 
                 <!-- Project 2 -->
                 <div class="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100 shadow-md">
-                    <div class="h-48 bg-gradient-to-r from-blue-500 to-primary-pink flex items-center justify-center">
-                        <i class="fas fa-sign text-6xl text-white opacity-90"></i>
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/Board.jpg" alt="Retail Signage Project" class="w-full h-full object-cover rounded-lg">
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-black">Retail Signage</h3>
@@ -490,8 +573,10 @@
                 
                 <!-- Project 3 -->
                 <div class="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100 shadow-md">
-                    <div class="h-48 bg-gradient-to-r from-green-500 to-primary-pink flex items-center justify-center">
-                        <i class="fas fa-tshirt text-6xl text-white opacity-90"></i>
+                    <div class="service-image">
+                        <div class="image-placeholder w-full h-full flex items-center justify-center">
+                            <img src="images/BOKEH.jpg" alt="Event Apparel Project" class="w-full h-full object-cover rounded-lg">
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-black">Event Apparel</h3>
@@ -523,7 +608,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card p-6 rounded-2xl">
+                <div class="testimonial-card p-6 rounded-2xl card-hover">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-primary-pink rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">
                             JD
@@ -546,7 +631,7 @@
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card p-6 rounded-2xl">
+                <div class="testimonial-card p-6 rounded-2xl card-hover">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-primary-pink rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">
                             SJ
@@ -569,7 +654,7 @@
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card p-6 rounded-2xl">
+                <div class="testimonial-card p-6 rounded-2xl card-hover">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-primary-pink rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">
                             MR
@@ -618,12 +703,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div class="lg:col-span-1">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-primary-pink rounded-full flex items-center justify-center mr-3 shadow-md">
-                            <i class="fas fa-star text-white text-sm"></i>
-                        </div>
-                        <span class="text-xl font-bold">Galaxy <span class="text-primary-pink">Printing</span></span>
-                    </div>
+                    <a href="index.html" class="navbar-brand">
+                        <!-- Replace the src with your actual logo path -->
+                        <img src="Galaxy Logo Revamp-01.png" alt="Galaxy Printing Logo" class="footer-logo">
+                    </a>
                     <p class="text-gray-300 mb-6">
                         Professional printing solutions with quality, speed, and exceptional customer service.
                     </p>
@@ -781,7 +864,7 @@
         // Add loading animation to elements
         document.addEventListener('DOMContentLoaded', function() {
             // Animate elements on load
-            const animatedElements = document.querySelectorAll('.feature-box, .service-card');
+            const animatedElements = document.querySelectorAll('.feature-box, .service-card, .testimonial-card');
             animatedElements.forEach((element, index) => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(20px)';
